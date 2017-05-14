@@ -1,0 +1,113 @@
+MyScreenManager:
+	HomeScreen:
+	TemperatureScreen:
+	UmitureScreen:
+	MotionScreen:
+	ReportScreen:	
+<HomeScreen>:
+	name: 'home'
+	GridLayout:
+		rows: 2
+		cols: 2
+		Button:
+			id: temp_button
+			on_press: root.manager.current = 'temperatura' 
+			Image:
+				source: 'temperatura.png'
+				center_x: self.parent.center_x
+				center_y: self.parent.center_y
+			Label:
+				text: 'Temperatura'
+				center_x: self.parent.center_x
+				center_y: self.parent.center_y - 50
+		Button:
+			id: impacto_button
+			on_press: root.manager.current = 'movimento'
+			Image:
+				source: 'movimento.png'
+				center_x: self.parent.center_x
+				center_y: self.parent.center_y
+			Label:
+				text: 'Movimento'
+				center_x: self.parent.center_x
+				center_y: self.parent.center_y - 50
+		Button:
+			id:umidade_button
+			on_press: root.manager.current = 'umidade'
+			Image:
+				source: 'umidade.png'
+				center_x: self.parent.center_x
+				center_y: self.parent.center_y
+			Label:
+				text: 'Umidade'
+				center_x: self.parent.center_x
+				center_y: self.parent.center_y - 50
+		Button:
+			id:relatorio_button
+			on_press: root.manager.current = 'relatorio'
+			Image:
+				source: 'relatorio.png'
+				center_x: self.parent.center_x
+				center_y: self.parent.center_y
+			Label:
+				text: 'Relatorio Geral'
+				center_x: self.parent.center_x
+				center_y: self.parent.center_y - 50
+<TemperatureScreen>:
+	name: 'temperatura'
+	Label:
+		id: label_temperatura
+		text: root.data + " graus Celsius"
+		font_size: 60
+		center_x: self.parent.center_x
+		center_y: self.parent.center_y
+	
+	ImageButton:
+		source: 'return.png'
+		on_press: root.manager.current = 'home'		
+<UmitureScreen>:
+	name: 'umidade'
+	Label:
+		text: root.umidade +"% de umidade"
+		font_size: 60
+		center_x: self.parent.center_x
+		center_y: self.parent.center_y
+	ImageButton:
+		source: 'return.png'
+		on_press: root.manager.current = 'home'
+<MotionScreen>:
+	name: 'movimento'
+	Label:
+		id: label_movimento
+		text: root.movimento
+		font_size: 30
+		center_x: self.parent.center_x
+		center_y: self.parent.center_y
+	ImageButton:
+		source: 'return.png'
+		on_press: root.manager.current =  'home'
+<ReportScreen>:
+	name: 'relatorio'
+	GridLayout:
+		cols:1
+		rows:4
+		Label:
+			id: label_maior_temperatura
+			text: "Maior Temperatura: "+ root.maiorTemp + " graus Celsius"
+			font_size:15
+			halign:
+		Label:
+			id: label_menor_temperatura
+			text: "Menor Temperatura: "+ root.menorTemp + " graus Celsius"
+			font_size:15
+		Label:
+			id: label_maior_umidade
+			text: "Maior umidade: "+ root.maiorUmid + "%"
+			font_size:15
+		Label:
+			id: label_menor_umidade
+			text: "Menor umidade: "+ root.menorUmid + "%"
+			font_size:15
+		ImageButton:
+			source: 'return.png'
+			on_press: root.manager.current = 'home'

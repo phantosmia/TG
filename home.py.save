@@ -1,0 +1,13 @@
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout 
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.button import Button
+class HomeScreen(BoxLayout):
+	Builder.load_file("layout.kv")
+
+class MyApp(App):
+	def build(self):
+		return HomeScreen()
+if __name__=="__main__":
+	MyApp().run()
